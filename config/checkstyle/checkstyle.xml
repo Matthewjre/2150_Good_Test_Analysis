@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+
+    <!--
+        This Checkstyle file is designed for beginner Java projects using
+        google-java-formatter.
+
+        Goal:
+        - Enforce basic Google-style conventions
+        - Avoid rules that fight the formatter
+        - Avoid overly strict documentation requirements
+        - Catch common beginner mistakes
+    -->
+
+    <!-- Files should end with a newline. -->
+    <module name="NewlineAtEndOfFile"/>
+
+    <!-- Google Java Style uses spaces, not tabs. -->
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
+
+    <!--
+        Google Java Style uses a 100-character line limit.
+        Package/import lines are ignored because students usually should not
+        manually wrap those.
+    -->
+    <module name="LineLength">
+        <property name="max" value="100"/>
+        <property name="ignorePattern" value="^package.*|^import.*|https?://"/>
+    </module>
+
+    <module name="TreeWalker">
+
+        <!-- ===================== -->
+        <!-- Naming conventions    -->
+        <!-- ===================== -->
+
+        <!-- Classes and interfaces use UpperCamelCase: GameBoard, BoardPosition. -->
+        <module name="TypeName"/>
+
+        <!-- Methods use lowerCamelCase, and tests may separate behavior clauses with underscores. -->
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+        </module>
+
+        <!-- Variables use lowerCamelCase: currentPlayer, columnChoice. -->
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="ParameterName"/>
+
+        <!-- Constants use UPPER_SNAKE_CASE: MAX_ROWS, NUM_COLUMNS. -->
+        <module name="ConstantName"/>
+
+        <!-- ===================== -->
+        <!-- Imports               -->
+        <!-- ===================== -->
+
+        <!-- Do not use imports like java.util.*. -->
+        <module name="AvoidStarImport"/>
+
+        <!-- Do not import classes that are never used. -->
+        <module name="UnusedImports"/>
+
+        <!-- Do not import classes from java.lang, such as java.lang.String. -->
+        <module name="RedundantImport"/>
+
+        <!-- ===================== -->
+        <!-- Braces and blocks     -->
+        <!-- ===================== -->
+
+        <!-- Require braces for if, else, for, while, and do statements. -->
+        <module name="NeedBraces"/>
+
+        <!-- Opening braces should follow standard Java placement. -->
+        <module name="LeftCurly"/>
+
+        <!-- Closing braces should follow standard Java placement. -->
+        <module name="RightCurly"/>
+
+        <!-- Prevent accidentally empty blocks unless clearly written. -->
+        <module name="EmptyBlock">
+            <property name="option" value="TEXT"/>
+        </module>
+
+        <!-- Catch accidental extra semicolons. -->
+        <module name="EmptyStatement"/>
+
+        <!-- ===================== -->
+        <!-- Whitespace            -->
+        <!-- ===================== -->
+
+        <!-- Require spaces after commas, semicolons, and type casts. -->
+        <module name="WhitespaceAfter"/>
+
+        <!-- Require spaces around operators and other tokens. -->
+        <module name="WhitespaceAround">
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+            <property name="allowEmptyTypes" value="true"/>
+            <property name="allowEmptyLoops" value="true"/>
+            <property name="allowEmptyLambdas" value="true"/>
+            <property name="allowEmptyCatches" value="true"/>
+        </module>
+
+        <!-- Only one statement per line. -->
+        <module name="OneStatementPerLine"/>
+
+        <!-- ===================== -->
+        <!-- Common beginner bugs  -->
+        <!-- ===================== -->
+
+        <!-- If equals is overridden, hashCode should also be overridden. -->
+        <module name="EqualsHashCode"/>
+
+        <!-- Avoid expressions like if (isValid == true). -->
+        <module name="SimplifyBooleanExpression"/>
+
+        <!-- Avoid returning true/false from an if when the condition can be returned directly. -->
+        <module name="SimplifyBooleanReturn"/>
+
+        <!-- Do not compare strings using == or !=. -->
+        <module name="StringLiteralEquality"/>
+
+        <!-- Do not write empty catch blocks. -->
+        <module name="EmptyCatchBlock"/>
+
+    </module>
+</module>
